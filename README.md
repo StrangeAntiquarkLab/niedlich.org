@@ -1,12 +1,26 @@
-# niedlich.org
+## niedlich.org
 Website and API to retrieve cute files of cute animals
 
-## niedlich [needlikh]
+### niedlich [needlikh]
 adjective, German: cute
 
 From the same stem as the English world "Needly" it describes something that is so cute, you just NEED it.
 
-## Features / TODO
+### License
+
+This project is licensed under a custom Non-Commercial Open Source License.
+See [LICENSE.md](LICENSE.md) for the full text.
+
+#### Important Notes for Contributors
+
+By submitting code to this repository, you agree to the Contributor License Agreement in Section 4 of the license, including:
+- You are the original author of all submitted code
+- You are not submitting AI-generated code
+- You grant the project maintainer broad rights to use your contribution, to maintain the integrity of the project
+
+See [CONTRIBUTERS.md](CONTRIBUTERS.md) for contribution credits.
+
+### Features / TODO
 
 - [ ] Database System to store media of cute animals directly
   - [ ] Integrate Options for CDN/S3 Storage
@@ -48,17 +62,3 @@ From the same stem as the English world "Needly" it describes something that is 
   - [ ] Discord
   - [ ] Telegram
   - [ ] X?
-
-## License
-
-This project is licensed under a custom Non-Commercial Open Source License.
-See [LICENSE.md](LICENSE.md) for the full text.
-
-### Important Notes for Contributors
-
-By submitting code to this repository, you agree to the Contributor License Agreement in Section 4 of the license, including:
-- You are the original author of all submitted code
-- You are not submitting AI-generated code
-- You grant the project maintainer broad rights to use your contribution, to maintain the integrity of the project
-
-See [CONTRIBUTERS.md](CONTRIBUTERS.md) for contribution credits.
