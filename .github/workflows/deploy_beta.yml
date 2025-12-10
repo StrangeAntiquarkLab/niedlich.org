@@ -20,6 +20,6 @@ jobs:
           script: |
             cd /var/www/beta.niedlich.org
             git pull origin master
-            composer install --no-dev --optimize-autoloader
-            php artisan migrate --force
-            php artisan optimize:clear
+          #  composer install --no-dev --optimize-autoloader
+          #  php artisan migrate --force
+          #  php artisan optimize:clear
