@@ -21,5 +21,7 @@ jobs:
             cd /var/www/beta.niedlich.org
             git pull origin master
             composer install --no-dev --optimize-autoloader
+            npm install
+            npm run buiild
             php artisan migrate --force
             php artisan optimize:clear
