@@ -129,16 +129,16 @@ class CaaSController extends Controller
             $imageContent = @file_get_contents($mediaUrl);
 
             // If download fails, stream the an error_cat instead
-            if (!$imageContent) {
-                $fallbackUrl = "https://http.cat/523.jpg";
-                $imageContent = @file_get_contents($fallbackUrl);
-                $mime = "image/jpeg";
-            } else {
+            //if (!$imageContent) {
+            //    $fallbackUrl = "https://http.cat/523.jpg";
+            //    $imageContent = @file_get_contents($fallbackUrl);
+            //    $mime = "image/jpeg";
+            //} else {
                 // Detect MIME type of media
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
                 $mime = finfo_buffer($finfo, $imageContent);
                 finfo_close($finfo);
-            }
+            //}
 
             return response()->stream(function () use ($imageContent) {
                 echo $imageContent;
