@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('landing');
+})->name('landing');
+
+Route::view('/quickstart', 'quickstart')->name('quickstart');
+Route::view('/docs_api', 'docs_api')->name('docs_api');
 
 Route::middleware([
     'auth:sanctum',

@@ -3,5 +3,12 @@
 @tailwind utilities;
 
 [x-cloak] {
-    display: none;
+  display: none;
+}
+
+/* ---------- Components ---------- */
+@layer components {
+    .coming-soon {
+        @apply text-gray-400 cursor-not-allowed pointer-events-none;
+    }
 }
