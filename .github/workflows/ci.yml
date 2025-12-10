@@ -23,11 +23,11 @@ jobs:
           extensions: mbstring, intl, pdo_mysql
           coverage: none
 
-      # - name: Validate composer.json
-      #   run: composer validate --no-interaction
+      - name: Validate composer.json
+        run: composer validate --no-interaction
 
-      # - name: Install dependencies
-      #   run: composer install --no-dev --prefer-dist --no-progress
+      - name: Install dependencies
+        run: composer install --no-dev --prefer-dist --no-progress
 
       - name: PHP Lint
         run: |
