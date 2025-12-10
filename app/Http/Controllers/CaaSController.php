@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 use App\Models\Tag;
 use App\Models\TagSynonym;
 use App\Models\Media;
+use Illuminate\Http\RedirectResponse;
 use Nette\Utils\Json;
 
 class CaaSController extends Controller
@@ -27,7 +28,7 @@ class CaaSController extends Controller
     protected static $typePrefixes = ['image', 'video', 'pic', 'gif', 'webm', 'mp4', 'fact', 'factimage', 'teapot'];
     private $type = 'image';
 
-    public function serve($path, Request $request): JsonResponse | StreamedResponse
+    public function serve($path, Request $request): JsonResponse | StreamedResponse | RedirectResponse
     {
         $this->request = $request;
 
@@ -125,30 +126,23 @@ class CaaSController extends Controller
 
         if ($isBrowserImageRequest) {
 
-            // Try downloading the media file
-            // $imageContent = @file_get_contents($mediaUrl);
+            // Temporary fix
+            // TODO: Signed URLs to fetch the images
+            return redirect()->away($media);
 
-            // Try streaming the media file
-            $stream = fopen($mediaUrl, 'rb');
+            // Try downloading the media file
+            $imageContent = @file_get_contents($mediaUrl);
 
             // If download fails, stream the an error_cat instead
-            if (!$stream /*$imageContent*/) {
+            if (!$imageContent) {
                 $fallbackUrl = "https://http.cat/523.jpg";
                 $imageContent = @file_get_contents($fallbackUrl);
                 $mime = "image/jpeg";
             } else {
-                /*// Detect MIME type of media
+                // Detect MIME type of media
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
                 $mime = finfo_buffer($finfo, $imageContent);
-                finfo_close($finfo);*/
-
-                return response()->stream(function () use ($stream) {
-                    fpassthru($stream);
-                    fclose($stream);
-                }, 200, [
-                    'Content-Type' => 'image/*',
-                    'Cache-Control' => 'no-cache',
-                ]);
+                finfo_close($finfo);
             }
 
             return response()->stream(function () use ($imageContent) {
