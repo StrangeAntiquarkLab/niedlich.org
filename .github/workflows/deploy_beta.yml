@@ -1,0 +1,25 @@
+name: Deploy to Beta
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Beta Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.BETA_SERVER_HOST }}
+          username: ${{ secrets.BETA_SERVER_USER }}
+          key: ${{ secrets.BETA_SERVER_SSH_KEY }}
+          script: |
+            cd /var/www/beta.niedlich.org
+            git pull origin master
+            composer install --no-dev --optimize-autoloader
+            php artisan migrate --force
+            php artisan optimize:clear
