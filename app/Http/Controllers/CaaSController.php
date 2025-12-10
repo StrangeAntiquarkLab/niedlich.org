@@ -126,19 +126,30 @@ class CaaSController extends Controller
         if ($isBrowserImageRequest) {
 
             // Try downloading the media file
-            $imageContent = @file_get_contents($mediaUrl);
+            // $imageContent = @file_get_contents($mediaUrl);
+
+            // Try streaming the media file
+            $stream = fopen($mediaUrl, 'rb');
 
             // If download fails, stream the an error_cat instead
-            //if (!$imageContent) {
-            //    $fallbackUrl = "https://http.cat/523.jpg";
-            //    $imageContent = @file_get_contents($fallbackUrl);
-            //    $mime = "image/jpeg";
-            //} else {
-                // Detect MIME type of media
+            if (!$stream /*$imageContent*/) {
+                $fallbackUrl = "https://http.cat/523.jpg";
+                $imageContent = @file_get_contents($fallbackUrl);
+                $mime = "image/jpeg";
+            } else {
+                /*// Detect MIME type of media
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
                 $mime = finfo_buffer($finfo, $imageContent);
-                finfo_close($finfo);
-            //}
+                finfo_close($finfo);*/
+
+                return response()->stream(function () use ($stream) {
+                    fpassthru($stream);
+                    fclose($stream);
+                }, 200, [
+                    'Content-Type' => 'image/*',
+                    'Cache-Control' => 'no-cache',
+                ]);
+            }
 
             return response()->stream(function () use ($imageContent) {
                 echo $imageContent;
