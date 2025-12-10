@@ -2,7 +2,7 @@
 Website and API to retrieve cute files of cute animals
 
 ### niedlich [needlikh]
-adjective, German: cute
+adjective, German: cute 
 
 From the same stem as the English world "Needly" it describes something that is so cute, you just NEED it.
 
