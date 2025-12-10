@@ -128,7 +128,7 @@ class CaaSController extends Controller
 
             // Temporary fix
             // TODO: Signed URLs to fetch the images
-            return redirect()->away($media);
+            return redirect()->away($mediaUrl);
 
             // Try downloading the media file
             $imageContent = @file_get_contents($mediaUrl);
