@@ -20,8 +20,8 @@ return new class extends Migration
             $table->enum('type', ['pic', 'gif', 'webm', 'mp4'])->default('pic');
 
             // Cloudflare Image Information
-            $table->string('cf_id')->unique()->nullable(); // Cloudflare Image ID
-            $table->string('url')->nullable(); // Cached/Fallback URL, will be preferred if set
+            $table->string('cf_id')->unique()->nullable(); // Cloudflare Image ID, will be preferred if set
+            $table->string('url')->nullable(); // Cached/Fallback URL
 
             $table->text('description')->nullable();
             $table->text('source')->nullable();

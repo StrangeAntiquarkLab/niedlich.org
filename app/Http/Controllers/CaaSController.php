@@ -115,7 +115,7 @@ class CaaSController extends Controller
         }
 
         // TODO: Make the Cloudflare Accounthash a Setting
-        $mediaUrl = $media->url ?? ($media->cf_id ? "https://imagedelivery.net/xCf5c8L40aEGMfUQww1u2A/{$media->cf_id}/public" : null);
+        $mediaUrl = $media->url ?? ($media->cf_id ? "https://imagedelivery.net/{$_ENV['CF_ACC_HASH']}/{$media->cf_id}/public" : null);
 
         if (!$mediaUrl) {
             return $this->errorResponse(500, "Malformed database entry, try again later");
