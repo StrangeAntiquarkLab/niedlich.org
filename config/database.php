@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -31,6 +31,7 @@ return [
 
     'connections' => [
 
+        // NOT SUPPORTED!
         /*'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DB_URL'),
@@ -83,7 +84,8 @@ return [
             ]) : [],
         ],
 
-        'pgsql' => [
+        // NOT SUPPORTED!
+        /*'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -96,9 +98,10 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => 'prefer',
-        ],
+        ],*/
 
-        'sqlsrv' => [
+        // NOT SUPPORTED!
+        /*'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', 'localhost'),
@@ -111,7 +114,7 @@ return [
             'prefix_indexes' => true,
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
-        ],
+        ],*/
 
     ],
 

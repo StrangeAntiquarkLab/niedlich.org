@@ -45,7 +45,7 @@ class MediaController extends Controller
                 'nonExistentTags' => $this->nonExistentTags,
             ], 201);
         } catch (ValidationException $e) {
-            // Keep Validation Exceptions
+
             throw $e;
         } catch (\Exception $e) {
             // All other errors
